@@ -1,0 +1,7 @@
+SonSon Video To do
+------------------
+
+	Support screen-flip.
+	Optimize scroll copying?
+	Optimize background rendering?
+

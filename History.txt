@@ -1,0 +1,19 @@
+SonSon Video revision history
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+
+V0.0.5 - 2021-03-05 (FluBBa)
+	Added load/save state.
+
+V0.0.3 - 2021-02-21 (FluBBa)
+	Fixed horizontal sprite position on GBA.
+
+V0.0.2 - 2021-02-17 (FluBBa)
+	Everything except screen flip seems to work.
+
+V0.0.1 - 2021-02-14 (FluBBa)
+	Started recode for gcc/NDS.
+
+V0.0.0 - 2008-04-16 (FluBBa)
+	First GBA release.
+
