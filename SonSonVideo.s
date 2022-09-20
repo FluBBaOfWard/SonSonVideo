@@ -7,7 +7,7 @@
 #elif NDS
 #include "../Shared/nds_asm.h"
 #endif
-#include "../Equates.h"
+#include "../Shared/EmuSettings.h"
 #include "SonSonVideo.i"
 
 	.global sonVideoInit
