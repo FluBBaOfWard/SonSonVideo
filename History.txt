@@ -2,6 +2,9 @@ SonSon Video revision history
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
+V0.0.6 - 2022-11-27 (FluBBa)
+	Fixed number of scanlines (282).
+
 V0.0.5 - 2021-03-05 (FluBBa)
 	Added load/save state.
 

@@ -1,1 +1,1 @@
-#define SONSONVERSION "V0.0.5"
+#define SONSONVERSION "V0.0.6"

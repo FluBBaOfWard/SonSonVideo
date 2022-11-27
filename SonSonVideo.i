@@ -1,9 +1,9 @@
 ;@ ASM header for the SonSon Video emulator
 ;@
 
-/** \brief  Game screen height in pixels */
+/** Game screen height in pixels */
 #define GAME_HEIGHT (240)
-/** \brief  Game screen width in pixels */
+/** Game screen width in pixels */
 #define GAME_WIDTH  (240)
 
 	.equ CHRSRCTILECOUNTBITS,	12

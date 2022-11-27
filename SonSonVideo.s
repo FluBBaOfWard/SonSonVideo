@@ -244,7 +244,7 @@ lineStateTable:
 	.long 239, endFrame			;@ Last visible scanline
 	.long 240, checkFrameIRQ	;@ frameIRQ on
 	.long 264, disableFrameIRQ	;@ frameIRQ off
-	.long 265, frameEndHook		;@ totalScanlines
+	.long 281, frameEndHook		;@ lastScanline
 ;@----------------------------------------------------------------------------
 #ifdef NDS
 	.section .itcm						;@ For the NDS ARM9
