@@ -33,28 +33,24 @@
 ;@----------------------------------------------------------------------------
 sonVideoInit:				;@ Only need to be called once
 ;@----------------------------------------------------------------------------
-	mov r1,#0xffffff00			;@ Build bg tile decode tbl
-	ldr r2,=CHR_DECODE
-ppi:
-	ands r0,r1,#0x01
-	movne r0,#0x10000000
-	tst r1,#0x02
-	orrne r0,r0,#0x01000000
-	tst r1,#0x04
-	orrne r0,r0,#0x00100000
-	tst r1,#0x08
-	orrne r0,r0,#0x00010000
-	tst r1,#0x10
-	orrne r0,r0,#0x00001000
-	tst r1,#0x20
-	orrne r0,r0,#0x00000100
-	tst r1,#0x40
-	orrne r0,r0,#0x00000010
-	tst r1,#0x80
-	orrne r0,r0,#0x00000001
-	str r0,[r2],#4
+	ldr r0,=CHR_DECODE			;@ Destination 0x400
+	mov r1,#0xffffff00			;@ Build chr decode tbl
+chrLutLoop:
+	movs r2,r1,lsl#31
+	movne r2,#0x10000000
+	orrcs r2,r2,#0x01000000
+	tst r1,r1,lsl#29
+	orrmi r2,r2,#0x00100000
+	orrcs r2,r2,#0x00010000
+	tst r1,r1,lsl#27
+	orrmi r2,r2,#0x00001000
+	orrcs r2,r2,#0x00000100
+	tst r1,r1,lsl#25
+	orrmi r2,r2,#0x00000010
+	orrcs r2,r2,#0x00000001
+	str r2,[r0],#4
 	adds r1,r1,#1
-	bne ppi
+	bne chrLutLoop
 
 	bx lr
 ;@----------------------------------------------------------------------------
@@ -152,7 +148,7 @@ sonGetStateSize:		;@ Out r0=state size.
 
 ;@----------------------------------------------------------------------------
 #ifdef GBA
-	.section .ewram,"ax"
+	.section .ewram, "ax", %progbits
 	.align 2
 #endif
 ;@----------------------------------------------------------------------------
@@ -247,7 +243,7 @@ lineStateTable:
 	.long 281, frameEndHook		;@ lastScanline
 ;@----------------------------------------------------------------------------
 #ifdef NDS
-	.section .itcm						;@ For the NDS ARM9
+	.section .itcm, "ax", %progbits		;@ For the NDS ARM9
 #elif GBA
 	.section .iwram, "ax", %progbits	;@ For the GBA
 #endif
@@ -585,7 +581,7 @@ spr16Loop2:
 ;@----------------------------------------------------------------------------
 
 #ifdef GBA
-	.section .sbss				;@ For the GBA
+	.section .sbss				;@ This is EWRAM on GBA with devkitARM
 #else
 	.section .bss
 #endif
